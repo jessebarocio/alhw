@@ -8,10 +8,10 @@ import { TaskService } from './tasks/task.service';
 
 @Component({
     selector: 'al-app',
-    template: '<router-outlet></router-outlet>',
+    templateUrl: 'app/app.component.html',
     directives: [ROUTER_DIRECTIVES],
     providers: [TaskService]
 })
 export class AppComponent {
-    pageTitle: string = 'AvantLink Task List'
+    pageTitle: string = 'Tasks'
 }

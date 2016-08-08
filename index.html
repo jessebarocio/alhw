@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AvantLink Task List</title>
 
+    <link href="assets/bootstrap.css" rel="stylesheet" />
+    <link href="assets/site.css" rel="stylesheet" />
+
     <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
     <script src="node_modules/zone.js/dist/zone.js"></script>
@@ -16,7 +19,7 @@
     <script src="systemjs.config.js"></script>
     <!-- Bootstrap application -->
     <script>
-      System.import('app').catch(function(err){ console.error(err); });
+        System.import('app').catch(function(err){ console.error(err); });
     </script>
     <base href="/" />
 </head>

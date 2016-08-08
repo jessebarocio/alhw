@@ -1,0 +1,24 @@
+/* Required for bootstrap navbars when using .navbar-fixed-top */ 
+body {
+    padding-top: 70px;
+}
+
+.header-row {
+   background-color: #3667ae; 
+   margin-top: -20px;
+   color: white;
+   padding-bottom: 75px;
+}
+
+.content-row {
+    margin-top: -50px;
+}
+  
+.content-row > div {
+     background-color: #fff;
+     padding: 50px;
+}
+
+.strike {
+    text-decoration: line-through;
+}
