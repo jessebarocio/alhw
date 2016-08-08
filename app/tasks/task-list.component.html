@@ -1,3 +1,5 @@
 <ul>
-    <li *ngFor='#task of tasks'>{{task.task_name}}</li>
+    <li *ngFor='let task of tasks'>{{task.name}}</li>
 </ul>
+<input type="text" [(ngModel)]="newTask.name" />
+<button (click)="saveTask()">Save New</button>
