@@ -13,6 +13,19 @@ export class TaskService {
     });
 
     constructor(private http: Http) { }
+    
+    createTask(task: Task): Promise<Task> {
+        return this.http.post(this.tasksEndpoint, task, { headers: this.headers })
+            .toPromise()
+            .then(response => {
+                var taskData = (<TaskData>response.json().data);
+                return {
+                    id: taskData.task_id,
+                    name: taskData.task_name
+                };
+            })
+            .catch(this.handleError);
+    }
 
     getTasks(): Promise<Task[]> {
         return this.http.get(this.tasksEndpoint, { headers: this.headers })
@@ -41,8 +54,9 @@ export class TaskService {
             .catch(this.handleError);
     }
 
-    addTask(task: Task): Promise<Task> {
-        return this.http.post(this.tasksEndpoint, task, { headers: this.headers })
+    updateTask(task: Task): Promise<Task> {
+        var url = this.tasksEndpoint + '/' + task.id;
+        return this.http.put(url, task, { headers: this.headers })
             .toPromise()
             .then(response => {
                 var taskData = (<TaskData>response.json().data);
@@ -52,6 +66,21 @@ export class TaskService {
                 };
             })
             .catch(this.handleError);
+    }
+
+    deleteTask(id: number) {
+        var url = this.tasksEndpoint + '/' + id;
+        return this.http.delete(url, { headers: this.headers })
+            .toPromise()
+            .catch(this.handleError);
+    }
+    
+    saveTask(task: Task): Promise<Task> {
+        if(!task.id) {
+            return this.createTask(task);
+        } else {
+            return this.updateTask(task);
+        }
     }
 
     private handleError(error: any) {
