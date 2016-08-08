@@ -22,3 +22,12 @@ body {
 .strike {
     text-decoration: line-through;
 }
+
+/* toastr */
+.toast-top-center {
+    margin-top: 50px;
+}
+
+#toast-container > div {
+    opacity: 1;
+}

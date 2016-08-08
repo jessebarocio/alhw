@@ -2,6 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 
+import { AlerterService } from '../shared/alerter.service';
 import { Task } from './task';
 import { TaskService } from './task.service';
 
@@ -17,7 +18,8 @@ export class TaskListComponent implements OnInit {
     // An empty placeholder task.
     newTask: Task = new Task();
 
-    constructor(private taskService: TaskService) { }
+    constructor(private taskService: TaskService,
+        private alerter: AlerterService) { }
 
     getTasks() {
         // Retrieve all tasks from the service.
@@ -32,8 +34,12 @@ export class TaskListComponent implements OnInit {
             .then(task => {
                 this.tasks.push(task)
                 this.newTask = new Task();
+                this.alerter.success('Task created successfully!');
             })
-            .catch(error => this.error = error);
+            .catch(error => {
+                this.alerter.error('Unable to create task.');
+                console.error(error);
+            });
     }
 
     updateTask(task: Task) {
@@ -44,9 +50,13 @@ export class TaskListComponent implements OnInit {
                 var idx = this.tasks.indexOf(task);
                 if (idx >= 0) {
                     this.tasks[idx] = updatedTask;
+                    this.alerter.success('Task updated successfully!');
                 }
             })
-            .catch(error => this.error = error);
+            .catch(error => {
+                this.alerter.error('Unable to update task.');
+                console.error(error);
+            });
     }
 
     completeTask(task: Task) {
@@ -57,9 +67,13 @@ export class TaskListComponent implements OnInit {
                 var idx = this.tasks.indexOf(task);
                 if (idx >= 0) {
                     this.tasks.splice(idx, 1);
+                    this.alerter.success('Task completed successfully!');
                 }
             })
-            .catch(error => this.error = error);
+            .catch(error => {
+                this.alerter.error('Unable to complete task.');
+                console.error(error);
+            });
     }
 
     ngOnInit() {

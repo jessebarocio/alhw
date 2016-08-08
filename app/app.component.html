@@ -1,17 +1,10 @@
-<nav class='navbar navbar-default navbar-fixed-top'>
-  <div class='container-fluid'>
-    <a class='navbar-brand'>Tasks</a>
+<div class="row header-row">
+  <div class="col-md-8 col-md-push-2">
+    <h2>{{ pageTitle }}</h2>
   </div>
-</nav>
-<div class='container-fluid'>
-  <div class="row header-row">
-    <div class="col-md-8 col-md-push-2">
-      <h2>{{ pageTitle }}</h2>
-    </div>
-  </div>
-  <div class="row content-row">
-    <div class="col-md-8 col-md-push-2 panel">
-      <router-outlet></router-outlet>
-    </div>
+</div>
+<div class="row content-row">
+  <div class="col-md-8 col-md-push-2 panel">
+    <router-outlet></router-outlet>
   </div>
 </div>

@@ -1,6 +1,6 @@
 // TaskService handles communication with the tasks API.
 
-import { Injectable }    from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
